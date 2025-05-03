@@ -18,6 +18,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <!-- Add wake lock permission -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Add this permission for Android 12+ -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
 
     <application
         android:allowBackup="true"
@@ -31,24 +35,33 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-        <activity
-            android:name=".ScreamDetectionActivity"
-            android:exported="true"></activity>
+        <!-- Register the new foreground service -->
+        <service
+            android:name=".HelpDetectionService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+
         <activity
             android:name=".MainActivity2"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".TestActivity"
-            android:exported="true"></activity>
+
         <activity
             android:name=".GuardianSettingsActivity"
-            android:exported="true"></activity>
+            android:exported="true"/>
+
+        <!-- New Emergency Handler Activity -->
+        <activity
+            android:name=".EmergencyHandlerActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:showOnLockScreen="true"
+            android:launchMode="singleTask"/>
     </application>
 
 </manifest>

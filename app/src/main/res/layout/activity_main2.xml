@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity2">
 
-    <!-- App Bar with Emergency Icon -->
+    <!-- App Bar with Logo and Title -->
     <androidx.cardview.widget.CardView
         android:id="@+id/headerCard"
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                 android:id="@+id/emergencyIcon"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:contentDescription="Emergency icon"
+                android:contentDescription="Safety Shield icon"
                 android:src="@drawable/ic_emergency"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Emergency Help Detector"
+                android:text="SafeGuard"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -55,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerCard">
@@ -65,15 +65,15 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-            <!-- Description Card -->
+            <!-- SOS Button -->
             <androidx.cardview.widget.CardView
-                android:id="@+id/descriptionCard"
+                android:id="@+id/sosCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 app:cardBackgroundColor="@color/card_background"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="2dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -83,186 +83,58 @@
                     android:layout_height="wrap_content"
                     android:padding="16dp">
 
-                    <ImageView
-                        android:id="@+id/infoIcon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:contentDescription="Information icon"
-                        android:src="@drawable/ic_info"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/accent_color" />
-
-                    <TextView
-                        android:id="@+id/descriptionTextView"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="This app detects when you say 'help' and automatically sends your location to your guardian and calls them."
-                        android:textColor="@color/text_primary"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/infoIcon"
-                        app:layout_constraintTop_toTopOf="@+id/infoIcon" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Guardian Settings Card -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/guardianCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_background"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="2dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionCard">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:id="@+id/contactIcon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:contentDescription="Contact icon"
-                        android:src="@drawable/ic_contact"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/accent_color" />
-
-                    <TextView
-                        android:id="@+id/guardianLabelTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="Guardian Contact"
-                        android:textColor="@color/text_primary"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@+id/contactIcon"
-                        app:layout_constraintTop_toTopOf="@+id/contactIcon" />
-
-                    <TextView
-                        android:id="@+id/guardianNumberTextView"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/rounded_border"
-                        android:padding="12dp"
-                        android:text="Not set"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/guardianLabelTextView" />
-
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/setGuardianButton"
+                        android:id="@+id/sosButton"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:backgroundTint="@color/sos_button_color"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="SOS"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        app:cornerRadius="80dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.55"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/sosDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:backgroundTint="@color/secondary_color"
-                        android:paddingVertical="12dp"
-                        android:text="Set Guardian Number"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        app:cornerRadius="8dp"
-                        app:icon="@drawable/ic_edit"
-                        app:iconGravity="textStart"
-                        app:iconTint="@color/white"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/guardianNumberTextView" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Status Card -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/statusCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardBackgroundColor="@color/card_background"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="2dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/guardianCard">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:id="@+id/statusIcon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:contentDescription="Status icon"
-                        android:src="@drawable/ic_status"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/accent_color" />
-
-                    <TextView
-                        android:id="@+id/statusLabelTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="Current Status"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:text="Press to alert your guardians immediately"
                         android:textColor="@color/text_primary"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@+id/statusIcon"
-                        app:layout_constraintTop_toTopOf="@+id/statusIcon" />
-
-                    <TextView
-                        android:id="@+id/statusTextView"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/status_background"
-                        android:padding="12dp"
-                        android:text="Not listening"
-                        android:textColor="@color/text_secondary"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/statusLabelTextView" />
+                        app:layout_constraintTop_toBottomOf="@+id/sosButton" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Activation Card -->
+            <!-- Voice Monitoring Toggle -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/activationCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="24dp"
                 app:cardBackgroundColor="@color/card_background"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="2dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statusCard"
-                app:layout_constraintVertical_bias="0.0">
+                app:layout_constraintTop_toBottomOf="@+id/sosCard">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="20dp">
 
                     <ImageView
                         android:id="@+id/activateIcon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:contentDescription="Activate icon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:contentDescription="Voice detection icon"
                         android:src="@drawable/ic_power"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -272,10 +144,10 @@
                         android:id="@+id/activateLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="Help Detection"
+                        android:layout_marginStart="12dp"
+                        android:text="Voice Help Detection"
                         android:textColor="@color/text_primary"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="@+id/activateIcon"
                         app:layout_constraintStart_toEndOf="@+id/activateIcon"
@@ -294,19 +166,291 @@
                         app:trackTint="@color/switch_track_color" />
 
                     <TextView
+                        android:id="@+id/statusTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/status_background"
+                        android:padding="12dp"
+                        android:text="Not listening"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/activateLabel" />
+
+                    <TextView
                         android:id="@+id/activationDescription"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:padding="8dp"
-                        android:text="Toggle this switch to start or stop voice detection. When active, the app will listen for the word 'help' and respond automatically."
+                        android:text="When active, the app will listen for the word 'help' and automatically alert your guardians."
                         android:textColor="@color/text_secondary"
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/activateLabel" />
+                        app:layout_constraintTop_toBottomOf="@+id/statusTextView" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Guardian Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/guardianCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activationCard">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:id="@+id/contactIcon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:contentDescription="Guardian contact icon"
+                        android:src="@drawable/ic_contact"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/accent_color" />
+
+                    <TextView
+                        android:id="@+id/guardianLabelTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="My Guardians"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/contactIcon"
+                        app:layout_constraintStart_toEndOf="@+id/contactIcon"
+                        app:layout_constraintTop_toTopOf="@+id/contactIcon" />
+
+                    <TextView
+                        android:id="@+id/guardianNumberTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/rounded_border"
+                        android:padding="12dp"
+                        android:text="Mom (Primary): +1 555-123-4567"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/guardianLabelTextView" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/setGuardianButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:backgroundTint="@color/secondary_color"
+                        android:paddingVertical="12dp"
+                        android:text="Manage Guardians"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:cornerRadius="8dp"
+                        app:icon="@drawable/ic_edit"
+                        app:iconGravity="textStart"
+                        app:iconTint="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/guardianNumberTextView" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Quick Tools Grid -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/quickToolsCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/guardianCard"
+                app:layout_constraintVertical_bias="0.0">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/quickToolsTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quick Tools"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:columnCount="2"
+                        android:orientation="horizontal"
+                        android:rowCount="2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/quickToolsTitle">
+
+                        <!-- Location Sharing Tool -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/locationSharingTool"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="4dp"
+                            android:background="@drawable/tool_background"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:id="@+id/locationIcon"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:src="@drawable/ic_location"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:tint="@color/tool_icon_color" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:text="Share Location"
+                                android:textColor="@color/text_primary"
+                                android:textSize="14sp"
+                                app:layout_constraintTop_toBottomOf="@+id/locationIcon" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <!-- Fake Call Tool -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fakeCallTool"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="4dp"
+                            android:background="@drawable/tool_background"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:id="@+id/callIcon"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:src="@drawable/ic_call"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:tint="@color/tool_icon_color" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:text="Fake Call"
+                                android:textColor="@color/text_primary"
+                                android:textSize="14sp"
+                                app:layout_constraintTop_toBottomOf="@+id/callIcon" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <!-- Safe Routes Tool -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/safeRoutesTool"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="4dp"
+                            android:background="@drawable/tool_background"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:id="@+id/routeIcon"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:src="@drawable/ic_route"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:tint="@color/tool_icon_color" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:text="Safe Routes"
+                                android:textColor="@color/text_primary"
+                                android:textSize="14sp"
+                                app:layout_constraintTop_toBottomOf="@+id/routeIcon" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <!-- Check-in Tool -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/checkinTool"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="4dp"
+                            android:background="@drawable/tool_background"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:id="@+id/timerIcon"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:src="@drawable/ic_timer"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:tint="@color/tool_icon_color" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:text="Check-in Timer"
+                                android:textColor="@color/text_primary"
+                                android:textSize="14sp"
+                                app:layout_constraintTop_toBottomOf="@+id/timerIcon" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </GridLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary_color"
+        app:itemIconTint="@color/bottom_nav_item_color"
+        app:itemTextColor="@color/bottom_nav_item_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
